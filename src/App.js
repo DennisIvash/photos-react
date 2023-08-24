@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Menu from "./components/Menu";
+import Collections from "./components/collections/Collections";
 
 function App() {
+
+  const [collectionData, setCollectionData] = React.useState([])
+  React.useEffect(() => {
+    fetch('https://64dfcc8471c3335b25831233.mockapi.io/photos')
+      .then(res => res.json())
+      .then(json => setcollectionData(json))
+  }, []
+  )
+
+  console.log(collectionData[0].photos);
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <h1>My photograph collection</h1>
+
+      <Menu />
+
+      {/* <Collections /> */}
+      {/* name={photos[0].name} photos={photos[0].photos}  */}
     </div>
   );
 }
