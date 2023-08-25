@@ -5,24 +5,24 @@ import Collections from "./components/collections/Collections";
 function App() {
 
   const [collectionData, setCollectionData] = React.useState([])
+
+  const [searchValue, setSearchValue] = React.useState('')
+
   React.useEffect(() => {
     fetch('https://64dfcc8471c3335b25831233.mockapi.io/photos')
       .then(res => res.json())
-      .then(json => setcollectionData(json))
-  }, []
+      .then(json => setCollectionData(json))
+  }, [searchValue]
   )
-
-  console.log(collectionData[0].photos);
   
-
   return (
     <div className="wrapper">
       <h1>My photograph collection</h1>
 
-      <Menu />
+      <Menu searchValue={searchValue} setSearchValue={setSearchValue}/>
 
-      {/* <Collections /> */}
-      {/* name={photos[0].name} photos={photos[0].photos}  */}
+      <Collections collectionData={collectionData} />
+      
     </div>
   );
 }

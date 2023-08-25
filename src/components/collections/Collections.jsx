@@ -1,9 +1,10 @@
 import Collection from "./collection/Collection"
-function Collections({name, photos}) {
-    console.log(name, photos);
+function Collections({collectionData}) {
+
     return (
         <div className="collections">
-            <Collection name={name} photos={photos} />
+            {collectionData.map(obj => <Collection name={obj.name} photos={obj.photos} />)}
+           
         </div>
     )
 }
