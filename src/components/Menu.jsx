@@ -1,11 +1,18 @@
 function Menu({ searchValue, setSearchValue }) {
+
+  const cat = [
+    {'name':'All'},
+    {'name':'Mountains'},
+    {'name':'Oceans'},
+    {'name':'Architecture'},
+    {'name':'Towns'},
+  ]
+
   return (
     <div className="nav">
-      <a href="" className="active nav__item">All</a>
-      <a href="" className="nav__item">Mountains</a>
-      <a href="" className="nav__item">Oceans</a>
-      <a href="" className="nav__item">Architecture</a>
-      <a href="" className="nav__item">Towns</a>
+      <ul className="nav_ul">
+        {cat.map(obj => <li className="nav__item">{obj.name}</li>)}
+      </ul>
       <input
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}

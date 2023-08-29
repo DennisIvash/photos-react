@@ -12,7 +12,7 @@ function App() {
     fetch('https://64dfcc8471c3335b25831233.mockapi.io/photos')
       .then(res => res.json())
       .then(json => setCollectionData(json))
-  }, [searchValue]
+  }, []
   )
   
   return (
@@ -21,7 +21,7 @@ function App() {
 
       <Menu searchValue={searchValue} setSearchValue={setSearchValue}/>
 
-      <Collections collectionData={collectionData} />
+      <Collections searchValue={searchValue} collectionData={collectionData} />
       
     </div>
   );
