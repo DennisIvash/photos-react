@@ -1,9 +1,9 @@
-function Menu({ searchValue, setSearchValue }) {
+function Menu({ searchValue, setSearchValue, activeCategory, setActiveCategory }) {
 
   const cat = [
     {'name':'All'},
-    {'name':'Mountains'},
     {'name':'Oceans'},
+    {'name':'Mountains'},
     {'name':'Architecture'},
     {'name':'Towns'},
   ]
@@ -11,7 +11,7 @@ function Menu({ searchValue, setSearchValue }) {
   return (
     <div className="nav">
       <ul className="nav_ul">
-        {cat.map(obj => <li className="nav__item">{obj.name}</li>)}
+        {cat.map((obj, index) => <li onClick={() => setActiveCategory(index)} className={`nav__item ${index === activeCategory ? "active" : ""}`}>{obj.name}</li>)}
       </ul>
       <input
         value={searchValue}
